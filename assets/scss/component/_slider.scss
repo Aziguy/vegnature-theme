@@ -1,0 +1,417 @@
+@use '../abstracts/' as *;
+
+// swiper slider 
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-family: 'Font Awesome 5 Pro';
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.swiper-button-next:after {
+    content: "\f061";
+}
+
+.swiper-button-prev:after {
+    content: "\f060";
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px; 
+    top  : 24px;
+    z-index: 99;
+    opacity: 1;
+    @include transition3;
+    background: $color-1;
+
+    box-shadow: 0px 2px 4px rgb(0 0 0 / 10%);
+    &:hover,
+    &.swiper-button-disabled {
+        background: $color-6;
+        opacity: 1;
+        &::after {
+            color: $color-1;
+        }
+    }
+    &::after {
+        color: $color-6;
+    }
+}
+
+.swiper-button-next {
+    right: 0px; 
+    left : auto; 
+}
+
+ .swiper-button-prev {
+    right: 60px; 
+    left : auto; 
+}
+
+// flat special 
+
+.swiper-button-next4 {
+    right: 45px;
+    left : auto; 
+}
+
+ .swiper-button-prev4 { 
+    right: 99px;
+    left : auto; 
+}
+
+.flat-products .swiper-button-next4 {
+    right: 35px; 
+    left : auto; 
+}
+
+.flat-products .swiper-button-prev4 {
+     right: 89px; 
+     left : auto; 
+}
+
+.swiper-button-next4,
+.swiper-button-prev4 {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%; 
+    top  : 14px;
+    position: absolute;
+    z-index: 99;
+    opacity: 1;
+    @include transition3;
+    background: $color-1;
+    color: $color-6;
+    box-shadow: 0px 2px 4px rgb(0 0 0 / 10%);
+    @include flex-center;
+    &:hover,
+    &.swiper-button-disabled {
+        background: $color-3;
+        color: $color-1;
+        opacity: 1;
+    }
+    i {
+        font-size: 22px;
+        font-weight: 500;
+    }
+}
+
+// slider home 02
+.swiper-button-next3 {
+    right: 16.4%; 
+    left : auto; 
+}
+
+.swiper-button-prev3 {
+    right: auto; 
+    left : 16.4%; 
+}
+
+.swiper-button-next3,
+.swiper-button-prev3 {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%; 
+    top  : 45.7%;
+    position: absolute;
+    z-index: 99;
+    opacity: 1;
+    @include transition3;
+    background: $color-1;
+    color: $color-3;
+    box-shadow: 0px 2px 4px rgb(0 0 0 / 10%);
+    @include flex-center;
+    &:hover,
+    &.swiper-button-disabled {
+        background: $color-3;
+        color: $color-1;
+        opacity: 1;
+    }
+    i {
+        font-size: 24px;
+        font-weight: 500;
+    }
+}
+
+.slider.home3 .swiper-button-next3, 
+.slider.home3 .swiper-button-prev3 {
+    top: 40.2%;
+    color: $color-6;
+    &:hover,
+    &.swiper-button-disabled {
+        background: $color-6;
+        color: $color-1;
+        opacity: 1;
+    }
+}
+
+// slider home 01
+.slider .swiper-button-next2,
+.slider .swiper-button-prev2 {
+    font-size: 16px;
+    font-weight: 500;
+    position: absolute;
+    bottom: 43px;
+    z-index: 99;
+    color: #fff;
+    text-transform:uppercase;
+    &:hover {
+        color: $color-3
+    }
+    &.swiper-button-disabled {
+        color: $color-3;
+    }
+}
+.slider .swiper-button-next2 {
+    right: 20%;
+    left : auto; 
+    i {
+        margin-left: 1px;
+        font-size: 16px;
+        font-weight: 400;
+    }
+}
+
+.slider  .swiper-button-prev2 {
+    right: unset; 
+    left : 73.8%; 
+}
+// slider home 01
+.slider {
+    position: relative;
+    overflow: hidden;
+    .img-slider img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+    }
+    .slider-item {
+        position: relative;
+        padding: 218px 0 219px;
+        .content {
+            color: #fff;
+            width: 55%;
+            .heading {
+                margin-bottom: 35px;
+            }
+            .sub-title {
+                font-size: 30px;
+                font-weight: 500;
+                color: $color-3;
+                margin-bottom: 27px;
+            }
+            h1 {
+                cursor: text;
+                text-transform: capitalize;
+                font-weight: 700;
+                margin-bottom: 25px;
+            }
+            h3 {
+                font-weight: 500;
+                letter-spacing: 0.11px;
+            }
+        }
+    }
+    &.home2 {
+        .slider-item {
+            padding: 144px 0 144px;
+            background: #f3f6f0;
+            .images {
+                .image {
+                    position: absolute;
+                    width: 100%;
+                    margin-left: -70px;
+                    margin-top: 5px;
+                }
+                .mark-sl {
+                    position: absolute;
+                    margin-top: 90px;
+                    margin-left: 34px;
+                }
+            }
+        }
+    }
+    &.home3 {
+        .slider-item {
+            padding: 234px 0 235px;
+            .img-slider {
+                .overlay {
+                    opacity: 0.66;
+                }
+            }
+            .content {
+                width: 100%;
+                .heading {
+                    margin-bottom: 23px;
+                }
+                .sub-title {
+                    background: url(./../../assets/images/slider/bg-subtitle.png)  center center no-repeat;
+                    background-size: cover;
+                    position: relative;
+                    padding: 20px 87px;
+                    display: inline-block;
+                    color: $color-1;
+                    margin-bottom: 26px;
+                }
+                h1 {
+                    padding: 0px 120px;
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+/* animation slider */
+.flat-slider .signature-slider,
+.flat-slider .flat-bt-slider,
+.flat-slider .sub-heading ,
+.flat-slider .heading  {
+    transform: translateY(400px);
+}
+
+.flat-slider .signature-slider,
+.flat-slider .flat-bt-slider,
+.flat-slider .sub-heading,
+.flat-slider .heading {
+    opacity: 0;
+}
+
+.swiper-slide-active .flat-slider .signature-slider,
+.swiper-slide-active .flat-slider .flat-bt-slider,
+.swiper-slide-active .flat-slider .sub-heading,
+.swiper-slide-active .flat-slider .heading  {
+    opacity           : 1;
+    visibility        : visible;
+    -webkit-transition: transform 1100ms ease, opacity 1100ms ease;
+    -moz-transition   : transform 1100ms ease, opacity 1100ms ease;
+    -ms-transition    : transform 1100ms ease, opacity 1100ms ease;
+    -o-transition     : transform 1100ms ease, opacity 1100ms ease;
+    transition        : transform 1100ms ease, opacity 1100ms ease;
+    transition-delay  : 1100ms;
+}
+
+.swiper-slide-active .flat-slider .signature-slider,
+.swiper-slide-active .flat-slider .flat-bt-slider,
+.swiper-slide-active .flat-slider .sub-heading,
+.swiper-slide-active .flat-slider .heading {
+    transform: translateY(0) !important;
+}
+
+.swiper-slide-active .flat-slider .heading {
+    transition-delay: 800ms !important;
+}
+
+.swiper-slide-active .flat-slider .sub-heading {
+    transition-delay: 550ms !important;
+}
+
+.swiper-slide-active .flat-slider .flat-bt-slider {
+    transition-delay: 1100ms;
+}
+
+.swiper-slide-active .flat-slider .signature-slider {
+    transition-delay: 900ms;
+}
+
+//  swiper pagination slider
+.flat-themes .swiper-pagination,
+.flat-practice .swiper-pagination {
+    width: 100%;
+    margin-top: 50px;
+    position: relative;
+    bottom: 0 !important; 
+}
+
+.slider .swiper-pagination2 {
+    position: absolute;
+    bottom: 5.3%;
+    left: 20.1%;
+    z-index: 9;
+}
+
+.slider .swiper-pagination-bullet {
+    width: unset;
+    height: unset;
+    background: unset;
+    opacity: 1;
+    margin-right: 23px !important;
+    z-index: 99;
+    color: $color-3;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.slider .swiper-pagination-bullet {
+    background: unset;
+    &.swiper-pagination-bullet-active {
+        margin-left: 130px;
+        position: relative;
+        &::before {
+            @include transition3;
+            position: absolute;
+            left: -128px;
+            top: 10px;
+            content: "";
+            width: 105px;
+            height: 0.5px !important;
+            background-color: $color-3;
+        }
+    }
+}
+
+
+.flat-team {
+    .swiper-pagination {
+        position: relative;
+        margin-top: 71px;
+    }
+    .swiper-pagination-bullet {
+        background: transparent;
+        width: 16px;
+        height: 16px;
+        margin: 0 5px !important;
+        opacity: 1;
+        border: 1px solid $color-6;
+        &.swiper-pagination-bullet-active {
+            background:  $color-6;
+        }
+    }
+}
+
+.flat-testimonials {
+    .swiper-pagination {
+        position: relative;
+        margin-top: 155px;
+    }
+    .swiper-pagination-bullet {
+        background: $color-3;
+        width: 10px;
+        height: 10px;
+        margin: 0 8px !important;
+        opacity: 1;
+        &.swiper-pagination-bullet-active {
+            background-color: $color-3 !important;
+            opacity: 1;
+               &::before {
+                @include transition3;
+                position: absolute;
+                transform: translate(-50%, -61%);
+                top: 50%;
+                border-radius: 50%;
+                content: "";
+                width : 19px;
+                height: 19px;
+                border: 1px solid $color-3;
+                overflow: visible;
+            }
+        }
+    }
+}

@@ -1,12 +1,12 @@
 {
   "name": "upstatement/timber-starter-theme",
-  "description": "Starter theme to build a Timber theme",
-  "type":"wordpress-theme",
+  "description": "Vegnature WordPress theme",
+  "type": "wordpress-theme",
   "license": "MIT",
   "authors": [
     {
-      "email": "jared@upstatement.com",
-      "name": "jarednova"
+      "email": "vegnature@vegnature.fr",
+      "name": "vegnature"
     }
   ],
   "repositories": [
@@ -16,7 +16,8 @@
     }
   ],
   "require": {
-    "timber/timber": "2.x-dev"
+    "timber/timber": "^2.0",
+    "upstatement/routes": "*"
   },
   "require-dev": {
     "automattic/wordbless": "^0.4.2",

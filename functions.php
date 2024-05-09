@@ -4,6 +4,9 @@
  * https://github.com/timber/starter-theme
  */
 
+// Customize login
+require_once get_template_directory() . '/inc/atgc-custom-login.php';
+
 // Load Composer dependencies.
 require_once __DIR__ . '/vendor/autoload.php';
 

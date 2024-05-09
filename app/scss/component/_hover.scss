@@ -1,0 +1,120 @@
+@use '../abstracts/' as *;
+
+
+// hover img
+
+.hover-img {
+    .img-style {
+        overflow     : hidden; 
+        img {
+            width             : 100%;
+            object-fit        : cover;
+            -webkit-transition: all 1s cubic-bezier(0.30, 1, 0.35, 1) 0s;
+            transition: all 1s cubic-bezier(0.30, 1, 0.35, 1) 0s;
+            transition: transform 500ms ease;
+        }
+    }
+    &:hover {
+        img {
+            -webkit-transform: scale3d(1.1, 1.1, 1.1);
+            transform: scale3d(1.1, 1.1, 1.1);
+            -webkit-transition: all 2s cubic-bezier(0.30, 1, 0.35, 2) 0s;
+            transition: all 2s cubic-bezier(0.30, 1, 0.35, 2) 0s;   
+    
+        }
+    }
+} 
+
+.hover-img2 {
+    .img-style2 {
+        img {
+            @include transition3;
+        }
+    }
+    &:hover {
+        img {
+            transform:  scale(1.05) rotate(10deg);
+        }
+    }
+} 
+
+
+.hover-img3 {
+    .img-style3 {
+        overflow     : hidden; 
+        img {
+            width             : 100%;
+            @include transition3;
+        }
+    }
+    &:hover {
+        img {
+            transform:  scale(1.075);
+            @include transition3;
+        }
+    }
+} 
+
+.hv-one {
+    position: relative;
+    .hover-one::after,
+    .hover-one::before {
+        content: "";
+        background: $color-1;
+        height: 0;
+        width: 0;
+        z-index: 1;
+        position: absolute;
+        opacity: .7;
+    }
+    .hover-one {
+        &::after {
+            z-index: 3;
+            bottom: 0;
+            left: 0;
+        }
+        &::before {
+            z-index: 3;
+            right: 0;
+            top: 0;
+        }
+    }
+    &:hover .hover-one::after,
+    &:hover .hover-one::before  {
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition-duration: 1.3s!important;
+    }
+}
+
+// hover overlay
+.box-hv {
+    .hover-style {
+        position: relative;
+        &::before {
+            content: '';
+            @include absolute;
+            background: rgba(0,0,0,0.1);
+            width: 100%;
+            height: 100%;
+            @include transition3;
+            z-index: 1;
+            transform: scale(1, 0 );
+            transform-origin: top bottom;
+            transition: transform 500ms ease;
+        }
+        &.hv-2::before {
+            background: rgb(86,169,24,0.95);
+            mix-blend-mode: multiply;
+            transform-origin: center;
+            transform: scale(0, 0);
+        }
+    }  
+    &:hover .hover-style::before {
+        transform: scale(1, 1);
+        transform-origin: center;
+    } 
+}
+
+
