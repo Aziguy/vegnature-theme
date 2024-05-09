@@ -6,6 +6,10 @@ use Timber\Site;
  * Class StarterSite
  */
 class StarterSite extends Site {
+
+	protected $custom_veg_breadcrumbs;   // A property to hold the custom breadcrumb instance
+	protected $veg_post_views_counter;  // A property to hold the Post_Views_Counter instance
+
 	public function __construct() {
 		add_action( 'after_setup_theme', array( $this, 'theme_supports' ) );
 		add_action( 'init', array( $this, 'register_post_types' ) );
@@ -15,8 +19,15 @@ class StarterSite extends Site {
 		add_filter( 'timber/twig', array( $this, 'add_to_twig' ) );
 		add_filter( 'timber/twig/environment/options', [ $this, 'update_twig_environment_options' ] );
 
+		// Instantiate our VEGNATURE custom breadcrumb class
+		$this->custom_veg_breadcrumbs = new VEG_Breadcrumbs();
+		// Instantiate ou Post_Views_Counter class
+		$this->veg_post_views_counter = new Post_Views_Counter();
+
 		parent::__construct();
 	}
+
+
 
 	/**
 	 * This is where you can register custom post types.
@@ -25,6 +36,8 @@ class StarterSite extends Site {
 
 	}
 
+
+	
 	/**
 	 * This is where you can register custom taxonomies.
 	 */
@@ -32,12 +45,34 @@ class StarterSite extends Site {
 
 	}
 
+
+
+	/** Function to register menus */
+    public function register_my_menus() {
+        register_nav_menus(
+            array(
+                'main-menu' => __('Main Menu'),
+                'social-menu' => __('Social Menu')
+            )
+        );
+    }
+
+
+
 	/**
 	 * This is where you add some context
 	 *
 	 * @param string $context context['this'] Being the Twig's {{ this }}.
 	 */
 	public function add_to_context( $context ) {
+		// Function to generate breadcrumbs
+        $breadcrumbs = VEG_Breadcrumbs::veg_generate_breadcrumbs();
+		$context['breadcrumbs'] = $breadcrumbs;
+		$context['custom_wp_title'] = wp_title('', false);
+		$context['logo'] = wp_get_attachment_image_src(get_theme_mod('custom_logo'), 'full');
+		$context['tagline'] = get_bloginfo('description');
+		// Instantiate our view class and add it into the context
+    	$context['post_views_counter'] = $this->veg_post_views_counter;
 		$context['foo']   = 'bar';
 		$context['stuff'] = 'I am a value set in your functions.php file';
 		$context['notes'] = 'These values are available everytime you call Timber::context();';
@@ -46,6 +81,8 @@ class StarterSite extends Site {
 
 		return $context;
 	}
+
+
 
 	public function theme_supports() {
 		// Add default posts and comments RSS feed links to head.
@@ -113,6 +150,7 @@ class StarterSite extends Site {
 	}
 
 
+
 	public function enqueue_theme_assets() {
 		// Enqueue CSS file
     	wp_enqueue_style('veg-style', get_template_directory_uri() . '/app/dist/app.css', array(), '1.0', 'all');
@@ -148,6 +186,8 @@ class StarterSite extends Site {
         //wp_enqueue_style('veg-images', get_template_directory_uri() . '/assets/img/images.css', array(), '1.0', 'all');
     }
 
+
+
 	/**
 	 * This would return 'foo bar!'.
 	 *
@@ -157,6 +197,8 @@ class StarterSite extends Site {
 		$text .= ' bar!';
 		return $text;
 	}
+
+
 
 	/**
 	 * This is where you can add your own functions to twig.
@@ -174,6 +216,8 @@ class StarterSite extends Site {
 
 		return $twig;
 	}
+
+
 
 	/**
 	 * Updates Twig environment options.
