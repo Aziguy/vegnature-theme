@@ -49,28 +49,22 @@
   var retinaLogos = function () {
     var retina = window.devicePixelRatio > 1 ? true : false;
     if (retina) {
-      $("#site-logo-inner")
-        .find("img")
-        .attr({
-          src: "assets/images/logo/logo@2x.png",
-          width: "146",
-          height: "65",
-        });
+      $("#site-logo-inner").find("img").attr({
+        src: "assets/images/logo/logo@2x.svg",
+        width: "146",
+        height: "65",
+      });
 
-      $("#logo-footer.style")
-        .find("img")
-        .attr({
-          src: "assets/images/logo/logo-footer@2x.png",
-          width: "146",
-          height: "65",
-        });
-      $("#logo-footer.style2")
-        .find("img")
-        .attr({
-          src: "assets/images/logo/logo-footer-home.png",
-          width: "146",
-          height: "65",
-        });
+      $("#logo-footer.style").find("img").attr({
+        src: "assets/images/logo/logo-footer@2x.svg",
+        width: "146",
+        height: "65",
+      });
+      $("#logo-footer.style2").find("img").attr({
+        src: "assets/images/logo/logo-footer-home.svg",
+        width: "146",
+        height: "65",
+      });
     }
   };
 

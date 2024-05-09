@@ -99,7 +99,54 @@ class StarterSite extends Site {
 		);
 
 		add_theme_support( 'menus' );
+
+		/*
+		 * Set the height and width of our logo.
+		 *
+		 */
+		add_theme_support('custom-logo', array(
+            'height'      => 83,   // Set the desired height here
+            'width'       => 203, // Set the desired width here
+            'flex-height' => true,
+            'flex-width'  => true,
+        ));
 	}
+
+
+	public function enqueue_theme_assets() {
+		// Enqueue CSS file
+    	wp_enqueue_style('veg-style', get_template_directory_uri() . '/app/dist/app.css', array(), '1.0', 'all');
+		wp_enqueue_style('font-awesome', get_template_directory_uri() . '/app/dist/font-awesome.css', array(), '5.13', 'all');
+		wp_enqueue_style('veg-responsive', get_template_directory_uri() . '/app/dist/responsive.css', array(), '1.0', 'all');
+
+    	// Enqueue JavaScript file
+		wp_enqueue_script('jquery', get_template_directory_uri() . '/app/js/jquery.min.js', '3.6.0', true);
+    	wp_enqueue_script('jquery-easing', get_template_directory_uri() . '/app/js/jquery.easing.js', array('jquery'), '1.3', true);
+		wp_enqueue_script('countto', get_template_directory_uri() . '/app/js/countto.js', array('jquery'), '1.0', true);
+		wp_enqueue_script('count-down', get_template_directory_uri() . '/app/js/count-down.js', array('jquery'), '1.0', true);
+		wp_enqueue_script('count-day', get_template_directory_uri() . '/app/js/countday.js', array('jquery'), '1.0', true);
+		wp_enqueue_script('bootstrap', get_template_directory_uri() . '/app/js/bootstrap.min.js', array('jquery'), '4.6.0', true);
+		wp_enqueue_script('swiper-bundle-min-js', get_template_directory_uri() . '/app/js/swiper-bundle.min.js', array('jquery'), '6.8.1', true);
+		wp_enqueue_script('swiper', get_template_directory_uri() . '/app/js/swiper.js', array('jquery'), '1.0', true);
+		wp_enqueue_script('jquery-validate', get_template_directory_uri() . '/app/js/jquery-validate.js', array('jquery'), '1.11.1', true);
+		wp_enqueue_script('plugin', get_template_directory_uri() . '/app/js/plugin.js', array('jquery'), '1.3', true);
+		wp_enqueue_script('shortcodes', get_template_directory_uri() . '/app/js/shortcodes.js', array('jquery'), '1.3', true);
+		wp_enqueue_script('veg-main', get_template_directory_uri() . '/app/js/main.js', array('jquery'), '1.0', true);
+		
+
+		// Pass data to our JavaScript file
+		wp_localize_script('veg-scripts', 'themeData', array(
+			'isHomePage' => is_front_page(), // We check if it's the home page
+		));
+    	
+
+    	// Enqueue Fonts if need
+    	//wp_enqueue_style('veg-fonts', get_template_directory_uri() . '/assets/fonts/fonts.css', array(), '1.0', 'all');
+
+        // Enqueue Images (if needed for inline CSS background images, etc.)
+        // Note: We typically don't enqueue images, but this is an example if necessary (You can comment this line if don't need)
+        //wp_enqueue_style('veg-images', get_template_directory_uri() . '/assets/img/images.css', array(), '1.0', 'all');
+    }
 
 	/**
 	 * This would return 'foo bar!'.
