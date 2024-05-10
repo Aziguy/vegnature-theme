@@ -1,29 +1,45 @@
 {% block html_head_container %}
 
-{% include 'html-header.twig' %}
-	{% block head %}
-	{% endblock %}
-	</head>
-{% endblock %}
+	{% include 'html-header.twig' %}
+	{% block head %}{% endblock %}
+</head>{% endblock %}<body class="{{body_class}} header-fixed" data-template="base.twig">
+{{ function('wp_body_open') }}
 
-	<body class="{{body_class}}" data-template="base.twig">
-		{{ function('wp_body_open') }}
-		<a class="skip-link screen-reader-text" href="#content">{{ _e( 'Skip to content') }}</a>
-		<header class="header" >
-			{% block header %}
-				<div class="wrapper">
-					<h1 class="hdr-logo" role="banner">
-						<a class="hdr-logo-link" href="{{site.url}}" rel="home">{{site.name}}</a>
-					</h1>
-					<nav id="nav-main" class="nav-main" role="navigation">
-						{% include "menu.twig" with {'items': menu.get_items} %}
-					</nav><!-- #nav -->
-				</div>
-			{% endblock %}
-		</header>
+<!-- preloade -->
+{% include 'partials/preload.twig' %}
+<!-- /preload -->
 
-		<section id="content" role="main" class="content-wrapper">
-			{% if title %}<h1>{{title}}</h1>{% endif %}
+
+<div id="wrapper">
+	<div
+		id="page" class="clearfix">
+		<!-- top-bar -->
+		{% include "partials/top-bar.twig" %}
+		<!-- end top-bar -->
+
+		<!-- header -->
+		<!-- This will fetch and render the 'main-menu' registered in functions.php -->
+		{% include "partials/header.twig" with {'items': menu.get_items} %}
+		<!-- end header -->
+
+		{# 	<a class="skip-link screen-reader-text" href="#content"> {{ _e( 'Skip to content') }}</a>
+								<header class="header">
+									{% block header %}
+										<div class="wrapper">
+											<h1 class="hdr-logo" role="banner">
+												<a class="hdr-logo-link" href="{{site.url}}" rel="home">{{site.name}}</a>
+											</h1>
+											<nav id="nav-main" class="nav-main" role="navigation">
+												{% include "menu.twig" with {'items': menu.get_items} %}
+											</nav>
+											<!-- #nav -->
+										</div>
+									{% endblock %}
+								</header> #}
+
+			<section id="content" role="main" class="content-wrapper"> {% if title %}
+				<h1>{{title}}</h1>
+			{% endif %}
 			<div class="wrapper">
 				{% block content %}
 					Sorry, no content
@@ -37,10 +53,13 @@
 		</section>
 
 		{% block footer %}
-			<footer id="footer">
+			<!-- Footer -->
+			<footer id="footer" class="clearfix page">
 				{% include 'footer.twig' %}
 			</footer>
+			<!-- /#footer -->
+			{% include 'partials/social-footer.twig' %}
 			{{ function('wp_footer') }}
 		{% endblock %}
 	</body>
-</html>
+</html></body>

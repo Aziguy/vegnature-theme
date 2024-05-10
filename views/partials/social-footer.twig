@@ -1,0 +1,27 @@
+<div class="widget-social-footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-12 col-sm-12">
+				<h5 class="title-bottom fw-4">
+					Copyright ©
+					{{"now"|date('Y')}}
+					<a href="{{ site.url }}" class="text-color-3">Vegnature</a>
+					. All Rights Reserved.
+				</h5>
+			</div>
+			<div class="col-lg-6 col-md-12 col-sm-12">
+				<div class="icon-bottom text-color-1">
+					{% include "partials/social-menu.twig" with {'items': social_menu.get_items} %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Bottom --></div><!-- /#page --></div><!-- /#wrapper --><div class="img-svg"><svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+<defs>
+	<filter id="goo">
+		<feGaussianBlur in="SourceGraphic" result="blur" stddeviation="10"></feGaussianBlur>
+		<feColorMatrix in="blur" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7" result="goo"></feColorMatrix>
+		<feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
+	</filter>
+</defs></svg></div><!-- <a id="scroll-top" class="button-go"></a> -->

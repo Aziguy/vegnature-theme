@@ -1,5 +1,8 @@
 <?php
 
+require_once get_template_directory() . '/inc/veg-breadcrumbs.php';
+require_once get_template_directory() . '/inc/veg-post-views.php';
+
 use Timber\Site;
 
 /**
@@ -14,6 +17,11 @@ class StarterSite extends Site {
 		add_action( 'after_setup_theme', array( $this, 'theme_supports' ) );
 		add_action( 'init', array( $this, 'register_post_types' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
+
+		// Register menus on init
+        add_action('init', array($this, 'register_my_menus'));
+		// Initialize the action hook for enqueueing scripts and styles when the theme is constructed
+        add_action('wp_enqueue_scripts', array($this, 'enqueue_theme_assets'));
 
 		add_filter( 'timber/context', array( $this, 'add_to_context' ) );
 		add_filter( 'timber/twig', array( $this, 'add_to_twig' ) );
@@ -76,7 +84,8 @@ class StarterSite extends Site {
 		$context['foo']   = 'bar';
 		$context['stuff'] = 'I am a value set in your functions.php file';
 		$context['notes'] = 'These values are available everytime you call Timber::context();';
-		$context['menu']  = Timber::get_menu();
+		$context['menu']  = Timber::get_menu('main-menu');
+		$context['social_menu']  = Timber::get_menu('social-menu');
 		$context['site']  = $this;
 
 		return $context;
@@ -162,7 +171,7 @@ class StarterSite extends Site {
     	wp_enqueue_script('jquery-easing', get_template_directory_uri() . '/app/js/jquery.easing.js', array('jquery'), '1.3', true);
 		wp_enqueue_script('countto', get_template_directory_uri() . '/app/js/countto.js', array('jquery'), '1.0', true);
 		wp_enqueue_script('count-down', get_template_directory_uri() . '/app/js/count-down.js', array('jquery'), '1.0', true);
-		wp_enqueue_script('count-day', get_template_directory_uri() . '/app/js/countday.js', array('jquery'), '1.0', true);
+		wp_enqueue_script('count-day', get_template_directory_uri() . '/app/js/count-day.js', array('jquery'), '1.0', true);
 		wp_enqueue_script('bootstrap', get_template_directory_uri() . '/app/js/bootstrap.min.js', array('jquery'), '4.6.0', true);
 		wp_enqueue_script('swiper-bundle-min-js', get_template_directory_uri() . '/app/js/swiper-bundle.min.js', array('jquery'), '6.8.1', true);
 		wp_enqueue_script('swiper', get_template_directory_uri() . '/app/js/swiper.js', array('jquery'), '1.0', true);

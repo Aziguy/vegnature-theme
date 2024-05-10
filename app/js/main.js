@@ -1,6 +1,6 @@
 /**
  * Header Connect
- * retinaLogo
+ * retinaLogos
  * ajaxContactForm
  * Loadmore Item
  * headerFixed
@@ -9,6 +9,28 @@
  * alertBox
  * loadmore
  */
+
+var retinaLogos = function () {
+  var retina = window.devicePixelRatio > 1 ? true : false;
+  if (retina) {
+    $("#site-logo-inner").find("img").attr({
+      src: "assets/images/logo/logo@2x.svg",
+      width: "146",
+      height: "65",
+    });
+
+    $("#logo-footer.style").find("img").attr({
+      src: "assets/images/logo/logo-footer@2x.svg",
+      width: "146",
+      height: "65",
+    });
+    $("#logo-footer.style2").find("img").attr({
+      src: "assets/images/logo/logo-footer-home.svg",
+      width: "146",
+      height: "65",
+    });
+  }
+};
 
 (function ($) {
   "use strict";
@@ -35,7 +57,7 @@
       // Run on document ready
       self.config.$document.on("ready", function () {
         // Retina Logos
-        self.retinaLogo();
+        retinaLogos();
       });
 
       // Run on Window Load
@@ -45,28 +67,6 @@
 
   // Start things up
   themesflatTheme.init();
-
-  var retinaLogos = function () {
-    var retina = window.devicePixelRatio > 1 ? true : false;
-    if (retina) {
-      $("#site-logo-inner").find("img").attr({
-        src: "assets/images/logo/logo@2x.svg",
-        width: "146",
-        height: "65",
-      });
-
-      $("#logo-footer.style").find("img").attr({
-        src: "assets/images/logo/logo-footer@2x.svg",
-        width: "146",
-        height: "65",
-      });
-      $("#logo-footer.style2").find("img").attr({
-        src: "assets/images/logo/logo-footer-home.svg",
-        width: "146",
-        height: "65",
-      });
-    }
-  };
 
   var ajaxContactForm = function () {
     $("#contactform,#commentform").each(function () {

@@ -1,0 +1,9 @@
+{% if social_menu %}
+
+	{% for item in items %}
+
+		<a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
+
+	{% endfor %}
+
+{% endif %}

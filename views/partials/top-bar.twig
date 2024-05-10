@@ -1,0 +1,36 @@
+<div id="top-bar">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 col-md-12">
+				<div class="inner flex-one">
+					<div class="top-bar-left top-box flex-three">
+						<h6 class="title-map flex-three">
+							<i class="fal fa-map-marker-alt"></i>
+							Adresse:
+							<span class="titles fw-4">138 Av. de Lodeve, 34070 Montpellier</span>
+						</h6>
+						<h6 class="title-email link-style-2">
+							<i class="fas fa-envelope"></i>
+							Email:<a href="info:vegnature@vegnature.fr" class="titles fw-4">vegnature@vegnature.fr
+							</a>
+						</h6>
+					</div>
+					<div class="top-bar-right top-box flex-three">
+						<h6 class="title-map flex-three link-style-2">
+							<i class="fal fa-phone-alt"></i>
+							Téléphone:
+							<a href="tel:0123456789" class="fw-4 titles">210-9856988</a>
+						</h6>
+						<div class="follow flex">
+							<h6 class="title-icon">Nous suivre :
+							</h6>
+							<div class="icon-top link-style-2">
+								{% include "partials/social-menu.twig" with {'items': social_menu.get_items} %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

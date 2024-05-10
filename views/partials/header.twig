@@ -1,0 +1,70 @@
+<header id="header_main" class="header_1 js-header">
+	<div class="container ">
+		<div class="row">
+			<div class="col-md-12">
+				<div id="site-header-inner">
+					<div class="wrap-box relative">
+						<div id="site-logo" class="clearfix">
+							<div
+								id="site-logo-inner">
+								<!-- ... Logos -->
+								{% if logo %}
+									{% set logoUrl = logo[0] %}
+									<a href="{{ site.url }}" rel="home" class="main-logo">
+										<img id="logo_header" src="{{ logoUrl }}" alt="Vegnature-Logo"/>
+									</a>
+								{% endif %}
+							</div>
+						</div>
+						<div class="mobile-button">
+							<span></span>
+						</div>
+						<!-- /.mobile-button -->
+						<!-- Menu nav -->
+
+						<nav id="main-nav" class="main-nav">
+							{% include "partials/nav.twig" %}
+						</nav>
+						<!-- /#main-nav -->
+						<div class="flat-button-top flex">
+							<div class="header-search flat-show-search flex" id="s1">
+								<a href="#" class="show-search header-search-trigger">
+									<span class="icon-Vector">
+										<i class="far fa-search"></i>
+									</span>
+								</a>
+
+
+								<div class="top-search">
+									<form action="#" method="get" role="search" class="search-form">
+										<input type="search" id="s" class="search-field" placeholder="Search..." value="" name="s" title="Search for" required="">
+										<button class="search search-submit" type="submit" title="Search">
+											<i class="far fa-search"></i>
+										</button>
+									</form>
+								</div>
+							</div>
+							<div class="sc-btn-top" id="site-header">
+								<div class="buttons">
+									<a class="blob-btn btn-style" href="contact.html">
+										Faire un don
+
+										<span class="blob-btn__inner">
+											<span class="blob-btn__blobs">
+												<span class="blob-btn__blob"></span>
+												<span class="blob-btn__blob"></span>
+												<span class="blob-btn__blob"></span>
+												<span class="blob-btn__blob"></span>
+											</span>
+										</span>
+									</a>
+									<br/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>

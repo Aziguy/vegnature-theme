@@ -5,7 +5,7 @@
  */
 
 // Customize login
-require_once get_template_directory() . '/inc/atgc-custom-login.php';
+require_once get_template_directory() . '/inc/veg-custom-login.php';
 
 // Load Composer dependencies.
 require_once __DIR__ . '/vendor/autoload.php';
