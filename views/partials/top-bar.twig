@@ -7,11 +7,13 @@
 						<h6 class="title-map flex-three">
 							<i class="fal fa-map-marker-alt"></i>
 							Adresse:
-							<span class="titles fw-4">138 Av. de Lodeve, 34070 Montpellier</span>
+							{% set veg_location = fn('get_option', 'veg_options_adresse', '138 Av. de Lodeve, 34070 Montpellier') %}
+							<span class="titles fw-4">{{ veg_location }}</span>
 						</h6>
 						<h6 class="title-email link-style-2">
 							<i class="fas fa-envelope"></i>
-							Email:<a href="info:vegnature@vegnature.fr" class="titles fw-4">vegnature@vegnature.fr
+							{% set veg_email = fn('get_option', 'veg_options_email', 'vegnature@vegnature.fr') %}
+							Email:<a href="info:{{ veg_email }}" class="titles fw-4">{{ veg_email }}
 							</a>
 						</h6>
 					</div>
@@ -19,7 +21,9 @@
 						<h6 class="title-map flex-three link-style-2">
 							<i class="fal fa-phone-alt"></i>
 							Téléphone:
-							<a href="tel:0123456789" class="fw-4 titles">210-9856988</a>
+							{% set veg_tel = fn('get_option', 'veg_options_telephone', '123456789') %}
+							<a href="tel:{{ veg_tel }}" class="fw-4 titles">+33 (0)
+								{{ veg_tel }}</a>
 						</h6>
 						<div class="follow flex">
 							<h6 class="title-icon">Nous suivre :

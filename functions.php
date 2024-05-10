@@ -6,6 +6,8 @@
 
 // Customize login
 require_once get_template_directory() . '/inc/veg-custom-login.php';
+// Path to our VegOptionsSettings class
+require_once get_template_directory() . '/inc/veg-admin-options.php';
 
 // Load Composer dependencies.
 require_once __DIR__ . '/vendor/autoload.php';

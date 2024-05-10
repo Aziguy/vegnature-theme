@@ -15,18 +15,21 @@
 						<p class="sub-widget-logo lh-28">{{ tagline }}</p>
 					{% endif %}
 					<h6 class="">
-						Address:
-						<span class="fw-4">4710-4890 Breckinridge USA
-						</span>
+						Adresse:
+						{% set veg_location = fn('get_option', 'veg_options_adresse', '138 Av. de Lodeve, 34070 Montpellier') %}
+						<span class="fw-4">{{ veg_location }}</span>
 					</h6>
 					<h6 class="link-style-4">
 						Email:
-						<a href="info:comapny@hasthemes.com " class="fw-4">comapny@hasthemes.com
+						{% set veg_email = fn('get_option', 'veg_options_email', 'vegnature@vegnature.fr') %}
+						<a href="info:{{ veg_email }}" class="fw-4">{{ veg_email }}
 						</a>
 					</h6>
 					<h6 class="link-style-4">
-						Call us:
-						<a href="tel:012345678" class="fw-4">(08) 22 455 789</a>
+						Appelez nous:
+						{% set veg_tel = fn('get_option', 'veg_options_telephone', '123456789') %}
+						<a href="tel:{{ veg_tel }}" class="fw-4">+33 (0)
+							{{ veg_tel }}</a>
 					</h6>
 				</div>
 			</div>
