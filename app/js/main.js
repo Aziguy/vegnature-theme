@@ -363,4 +363,5 @@ var retinaLogos = function () {
     alertBox();
     loadmore();
   });
+  $(".counter").countUp();
 })(jQuery);

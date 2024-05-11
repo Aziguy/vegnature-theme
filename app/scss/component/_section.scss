@@ -48,7 +48,6 @@
   &.inner {
     padding: 176px 0 179px 0px;
     position: relative;
-    background-image: url(../../assets/images/section/img-page-blog.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -150,7 +149,7 @@
 .flat-blog {
   padding-bottom: 100px;
   &.home {
-    padding-bottom: 75px;
+    padding-bottom: 0;
   }
   .blog-box {
     .media {
@@ -224,7 +223,7 @@
     font-size: 18px;
     line-height: 28px;
     &::before {
-      content: "\f086";
+      content: "\f06e";
       font-family: "Font Awesome 5 Pro";
       font-size: 18px;
       font-weight: 500;
@@ -1681,7 +1680,7 @@
         }
       }
       .content {
-        padding-top: 5px;
+        padding-top: 1.25rem;
         .title {
           font-size: 22px;
           font-weight: 600;

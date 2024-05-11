@@ -21,36 +21,14 @@
 		<!-- This will fetch and render the 'main-menu' registered in functions.php -->
 		{% include "partials/header.twig" with {'items': menu.get_items} %}
 		<!-- end header -->
+			{% if not fn('is_front_page') %}
 
-		{# 	<a class="skip-link screen-reader-text" href="#content"> {{ _e( 'Skip to content') }}</a>
-								<header class="header">
-									{% block header %}
-										<div class="wrapper">
-											<h1 class="hdr-logo" role="banner">
-												<a class="hdr-logo-link" href="{{site.url}}" rel="home">{{site.name}}</a>
-											</h1>
-											<nav id="nav-main" class="nav-main" role="navigation">
-												{% include "menu.twig" with {'items': menu.get_items} %}
-											</nav>
-											<!-- #nav -->
-										</div>
-									{% endblock %}
-								</header> #}
+			<!--=============== PAGE TITLE (Breadcrumb) ===============-->
+		{% include "partials/breadcrumbs.twig" %}
+			<!--=============== END PAGE TITLE (Breadcrumb) ===============-->
+		{% endif %}
+		{% block content %}{% endblock %}
 
-			<section id="content" role="main" class="content-wrapper"> {% if title %}
-				<h1>{{title}}</h1>
-			{% endif %}
-			<div class="wrapper">
-				{% block content %}
-					Sorry, no content
-				{% endblock %}
-			</div>
-			{% if sidebar %}
-				<aside class="layout-sidebar">
-					{{sidebar}}
-				</aside>
-			{% endif %}
-		</section>
 
 		{% block footer %}
 			<!-- Footer -->

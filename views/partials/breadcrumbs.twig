@@ -1,0 +1,29 @@
+<section class="flat-title-page inner" style="background-image: url({{ theme.link }}/assets/images/section/img-page-blog.jpg);">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-title-heading center">
+					{% if custom_wp_title %}
+						{% if 'Search Results' in custom_wp_title %}
+							{% set searchTerm = custom_wp_title|split('Search Results')|last|trim %}
+							{% if searchTerm %}
+								<h2 class="heading">Recherche pour :
+									{{ searchTerm }}</h2>
+							{% endif %}
+						{% else %}
+							<h2 class="heading">{{ custom_wp_title | raw }}</h2>
+						{% endif %}
+					{% endif %}
+					<div class="title-inner link-style-3">
+						<h5 class="">
+							{% if breadcrumbs %}
+								{{ breadcrumbs | raw }}
+							{% endif %}
+						</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
