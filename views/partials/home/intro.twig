@@ -1,18 +1,13 @@
 <section class="tf-section flat-about page">
+	{% set introValues = fn('veg_get_intro_customizer_values') %}
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6 col-md-7">
 				<div class="wrap-about">
 					<div class="heading-section">
-						<h5>A propos</h5>
-						<h2>Association Veg Nature</h2>
-						<p>
-
-							Veg Nature mène des actions & projets collectifs, collaboratifs, participatifs et pédagogiques à l’échelle du réseau local et national. 
-																																																																																																		Elle agit et s’engage à partir des 5 voies d’évolution que sont le lien social, l’alimentation saine, végétale et éthique, l’écologie, le véganisme et le bien-être.
-																																																																																																		Nos activités et actions participatives qui accueillent tout public favorisent les relations humaines de proximité par l’engagement individuel et collectif vers l’éco responsabilité, pour un mode de vie plus sain et plus respectueux de la nature sauvage. 
-																																																																																																		Nous favorisons aussi par notre action les contacts , la collaboration et le lien entre les acteurs économiques proches de nos valeurs.
-						</p>
+						<h5>{{ introValues.veg_intro_subtitle }}</h5>
+						<h2>{{ introValues.veg_intro_title }}</h2>
+						<p>{{ introValues.veg_intro_text }}</p>
 					</div>
 					<div class="box-icon flex">
 						<div class="icon">
@@ -49,10 +44,10 @@
 			<div class="col-lg-6 col-md-5">
 				<div class="wrap-img relative center">
 					<div class="images image-1">
-						<img src="{{ site.theme.link }}/assets/images/img-box/about-5.jpg" alt="images">
+						<img src="{{ introValues.veg_intro_image_1 }}" alt="images">
 					</div>
 					<div class="images image-2">
-						<img src="{{ site.theme.link }}/assets/images/img-box/about-6.jpg" alt="images">
+						<img src="{{ introValues.veg_intro_image_2 }}" alt="images">
 					</div>
 					<div class="mark-image">
 						<img src="{{ site.theme.link }}/assets/images/mark/mark-about.png" alt="images">

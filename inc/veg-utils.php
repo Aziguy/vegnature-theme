@@ -1,7 +1,5 @@
 <?php
 
-// Path to our CrossRefMetadataFetcher class..
-require_once get_template_directory() . '/inc/atgc-get-doi-metadata.php';
 
 /**
  * Formats a given number as a currency with the specified currency symbol.
@@ -63,35 +61,63 @@ add_filter('timber/twig', function ($twig) {
 
 
 /**
- * Retrieves banner Customizer values including title, subtitle, and text.
+ * Retrieves intro Customizer values including title, subtitle, text, images.
  * Defaults to predefined values if not set in the Customizer.
  *
- * @return array An associative array containing banner Customizer values.
+ * @return array An associative array containing section Customizer values.
  */
-function atgc_get_banner_customizer_values() {
-    
-    $banner_values = array(
-        'atgc_banner_title' => get_theme_mod('atgc_set_banner_title', 'Default Banner Title'),
-        'atgc_banner_subtitle' => get_theme_mod('atgc_set_banner_subtitle', 'Default Banner Subtitle'),
-        'atgc_banner_text' => get_theme_mod('atgc_set_banner_textarea', 'Default Banner Text'),
-        'atgc_banner_image' => wp_get_attachment_url( get_theme_mod('atgc_set_banner_image') )
+function veg_get_intro_customizer_values() {
+    $section_values = array(
+        'veg_intro_title'    => get_theme_mod( 'veg_set_intro_title', 'Default Intro. Title' ),
+        'veg_intro_subtitle' => get_theme_mod( 'veg_set_intro_subtitle', 'Default Intro. Subtitle' ),
+        'veg_intro_text'     => get_theme_mod( 'veg_set_intro_textarea', 'Default Intro. Text' ),
+        'veg_intro_image_1'  => wp_get_attachment_url( get_theme_mod( 'veg_set_intro_image_1' ) ),
+        'veg_intro_image_2'  => wp_get_attachment_url( get_theme_mod( 'veg_set_intro_image_2' ) ),
     );
 
-    return $banner_values;
+    return $section_values;
 }
 
+
+
 /**
- * Registers the 'atgc_get_banner_customizer_values' Twig filter to fetch banner Customizer settings in Twig templates.
+ * Retrieves stats Customizer values including title, subtitle, text, image, and stats numbers.
+ * Defaults to predefined values if not set in the Customizer.
  *
- * @param object $twig The Twig object to which the filter is added.
+ * @return array An associative array containing section Customizer values.
+ */
+function veg_get_stats_customizer_values() {
+    $section_values = array(
+        'veg_stats_title'        => get_theme_mod( 'veg_set_stats_title', 'Default Stats Title' ),
+        'veg_stats_subtitle'     => get_theme_mod( 'veg_set_stats_subtitle', 'Default Stats Subtitle' ),
+        'veg_stats_text'         => get_theme_mod( 'veg_set_stats_textarea', 'Default Stats Text' ),
+        'veg_stats_image'        => wp_get_attachment_url( get_theme_mod( 'veg_set_stats_image' ) ),
+        'veg_stats_sympathizers' => get_theme_mod( 'veg_set_stats_sympathizers', 0 ),
+        'veg_stats_maps'         => get_theme_mod( 'veg_set_stats_maps', 0 ),
+        'veg_stats_actions'      => get_theme_mod( 'veg_set_stats_actions', 0 ),
+    );
+
+    return $section_values;
+}
+
+
+
+/**
+ * Registers the 'veg_get_intro_customizer_values' and 'veg_get_stats_customizer_values' Twig filters
+ * to fetch section Customizer settings in Twig templates.
+ *
+ * @param object $twig The Twig object to which the filters are added.
  * @return object The modified Twig object.
  */
-add_filter('timber/twig', function($twig) {
-    // Add a Twig filter to get banner Customizer values in Twig templates
-    $twig->addFilter(new Twig\TwigFilter('atgc_get_banner_customizer_values', 'get_banner_customizer_values'));
+add_filter( 'timber/twig', function ( $twig ) {
+    // Add a Twig filter to get intro Customizer values in Twig templates
+    $twig->addFilter( new Twig\TwigFilter( 'veg_get_intro_customizer_values', 'veg_get_intro_customizer_values' ) );
+
+    // Add a Twig filter to get stats Customizer values in Twig templates
+    $twig->addFilter( new Twig\TwigFilter( 'veg_get_stats_customizer_values', 'veg_get_stats_customizer_values' ) );
 
     return $twig;
-});
+} );
 
 
 
