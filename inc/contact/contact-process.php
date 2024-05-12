@@ -1,5 +1,13 @@
 <?php
 
+// Include WordPress core files.
+require_once("../../../../../wp-load.php");
+// Prevent direct access to the file.
+
+if (! defined('ABSPATH')) {
+    exit;
+}
+
 $address = get_option('veg_options_email', 'vegnature@vegnature.fr');
 if (!defined("PHP_EOL")) define("PHP_EOL", "\r\n");
 
