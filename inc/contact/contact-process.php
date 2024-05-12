@@ -1,5 +1,5 @@
 <?php
-$address = "mandatairessm@gmail.com";
+$address = "vegnature@vegnature.fr";
 if (!defined("PHP_EOL")) define("PHP_EOL", "\r\n");
 
 $error = false;
