@@ -1,6 +1,6 @@
 <?php
 
-$address = "mandatairessm@gmail.com";
+$address = get_option('veg_options_email', 'vegnature@vegnature.fr');
 if (!defined("PHP_EOL")) define("PHP_EOL", "\r\n");
 
 $error = false;
