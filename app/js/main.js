@@ -13,21 +13,23 @@
 var retinaLogos = function () {
   var retina = window.devicePixelRatio > 1 ? true : false;
   if (retina) {
-    $("#site-logo-inner").find("img").attr({
-      src: "assets/images/logo/logo@2x.svg",
-      width: "146",
-      height: "65",
-    });
+    jQuery(document).ready(function ($) {
+      $("#site-logo-inner").find("img").attr({
+        src: "../../assets/images/logo/logo@2x.svg",
+        width: "146",
+        height: "65",
+      });
 
-    $("#logo-footer.style").find("img").attr({
-      src: "assets/images/logo/logo-footer@2x.svg",
-      width: "146",
-      height: "65",
-    });
-    $("#logo-footer.style2").find("img").attr({
-      src: "assets/images/logo/logo-footer-home.svg",
-      width: "146",
-      height: "65",
+      $("#logo-footer.style").find("img").attr({
+        src: "../../assets/images/logo/logo-footer@2x.svg",
+        width: "146",
+        height: "65",
+      });
+      $("#logo-footer.style2").find("img").attr({
+        src: "../../assets/images/logo/logo-footer-home.svg",
+        width: "146",
+        height: "65",
+      });
     });
   }
 };
@@ -57,7 +59,7 @@ var retinaLogos = function () {
       // Run on document ready
       self.config.$document.on("ready", function () {
         // Retina Logos
-        retinaLogos();
+        //retinaLogos();
       });
 
       // Run on Window Load
@@ -353,7 +355,7 @@ var retinaLogos = function () {
   // Dom Ready
   $(function () {
     $(window).on("load resize", function () {
-      retinaLogos();
+      //retinaLogos();
     });
     headerFixed();
     mobileNav();

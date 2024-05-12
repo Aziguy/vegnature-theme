@@ -12,6 +12,8 @@ require_once get_template_directory() . '/inc/veg-admin-options.php';
 require_once get_template_directory() . '/inc/veg-utils.php';
 // Path to our customizer function
 require_once get_template_directory() . '/inc/veg-customizer.php';
+// Path to our shortcode class
+require_once get_template_directory() . '/inc/veg-member-shortcode.php';
 
 // Load Composer dependencies.
 require_once __DIR__ . '/vendor/autoload.php';

@@ -6,6 +6,10 @@
   margin-bottom: 1rem;
 }
 
+strong {
+  font-weight: bolder !important;
+}
+
 .post-type-page ul {
   display: table-row;
   list-style: none;
@@ -142,4 +146,49 @@ w3l-featureshny p {
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(#226faf, #ff9c00, #247f2c);
   border-radius: 100px;
+}
+
+/*=============== MEMBERS STYLE ===============*/
+.veg-ml-3 {
+  margin-left: 1rem !important;
+}
+
+.veg-m-rl {
+  margin-right: 0.65rem;
+  margin-bottom: 0.65rem;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.veg-card {
+  background-color: #fff;
+  width: 280px;
+  border-radius: 33px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 2rem !important;
+}
+
+.veg-top-container {
+  display: flex;
+  align-items: center;
+}
+
+.veg-profile-image {
+  border-radius: 10px;
+  border: 2px solid #ff9c00;
+}
+
+.veg-name {
+  font-size: 15px;
+  font-weight: bold;
+  color: #272727;
+  position: relative;
+  top: 8px;
+}
+
+.veg-title {
+  font-size: 14px;
+  color: grey;
+  position: relative;
+  top: 2px;
 }
