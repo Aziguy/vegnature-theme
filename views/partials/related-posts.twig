@@ -17,8 +17,8 @@
 						</a>
 						<div class="content">
 							<div class="days absolute">
-								<div class="number">{{ post.date | date("d") }}</div>
-								<div class="titles">{{ post.date | date("M Y") }}</div>
+								<div class="number">{{ post.post_date | date("d") }}</div>
+								<div class="titles">{{ post.post_date | date("M Y") }}</div>
 							</div>
 							<h4>
 								<a href="{{ post.category_link }}">{{ post.category }}</a>
