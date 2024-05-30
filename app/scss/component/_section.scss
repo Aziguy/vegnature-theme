@@ -167,7 +167,7 @@
         letter-spacing: -0.2px;
       }
       h3 {
-        text-transform: capitalize;
+        text-transform: none;
         margin-bottom: 14px;
         a:hover {
           color: $color-6;
@@ -189,7 +189,7 @@
         border-radius: 5px;
         position: absolute;
         top: -47px;
-        font-size: 18px;
+        font-size: 15px;
         padding-top: 19px;
         .number {
           font-size: 30px;

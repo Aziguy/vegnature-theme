@@ -13,4 +13,8 @@
 		</div>
 	</section>
 	<!-- /content-wrapper -->
+	{# Include related posts section if related posts exist #}
+	{% if related_posts is defined and related_posts | length > 0 %}
+		{% include 'partials/related-posts.twig' with {'related_posts': related_posts} %}
+	{% endif %}
 {% endblock %}

@@ -23,6 +23,26 @@
 
 $context = Timber::context();
 
+// Function to fetch related posts based on category matching the page slug
+function get_related_posts($slug) {
+    $args = array(
+        'post_type' => 'post',
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'posts_per_page' => 3,
+        'post_status'    => 'publish',
+        'category_name'  => $slug // Fetch posts from category matching the page slug
+    );
+
+    return Timber::get_posts($args);
+}
+
 $timber_post     = Timber::get_post();
 $context['post'] = $timber_post;
+
+// Check if the page is "lecologie", "le-bien-etre", "lien-social", "veganisme" or "le-vegetalisme"
+if (in_array($timber_post->slug, ['lecologie', 'le-bien-etre', 'lien-social', 'veganisme', 'lalimentation-vegetale'])) {
+    $context['related_posts'] = get_related_posts($timber_post->slug);
+}
+
 Timber::render( array( 'page-' . $timber_post->post_name . '.twig', 'page.twig' ), $context );
