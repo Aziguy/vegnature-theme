@@ -41,7 +41,7 @@ $timber_post     = Timber::get_post();
 $context['post'] = $timber_post;
 
 // Check if the page is "lecologie", "le-bien-etre", "lien-social", "veganisme" or "le-vegetalisme"
-if (in_array($timber_post->slug, ['lecologie', 'le-bien-etre', 'lien-social', 'veganisme', 'lalimentation-vegetale'])) {
+if (in_array($timber_post->slug, ['lecologie', 'le-bien-etre', 'le-lien-social', 'le-veganisme', 'le-vegetalisme'])) {
     $context['related_posts'] = get_related_posts($timber_post->slug);
 }
 

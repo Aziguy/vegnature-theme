@@ -1,39 +1,124 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<div class="content-wrapper">
-		<article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
-			<img src="{{ post.thumbnail.src|resize(1200, 300) }}">
-			<section class="article-content">
-				<h1 class="article-h1">{{ post.title }}</h1>
-				<a href="{{ post.link }}">{{ _e('edit') }}</a>
-				<p class="blog-author">
-					<span>By</span><a href="{{post.author.path}}"> {{ post.author.name }} </a><span>&bull;</span> <time datetime="{{ post.date|date('Y-m-d H:i:s') }}">{{ post.date }}</time>
-				</p>
-				<div class="article-body">
-					{{post.content}}
-				</div>
-			</section>
 
-			<!-- comment box -->
-			<section class="comment-box">
-				<!-- comments -->
-				<div class="comments">
-				    {% if post.comments %}
-					<h3> comments </h3>
-					{% for cmt in post.comments %}
-					    {% include "comment.twig" with {comment:cmt} %}
-					{% endfor %}
-				    {% endif %}
-				</div>
+	<section class="tf-section2 flat-blog-details">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-md-12">
+					<article class="article">
+						<div class="post">
 
-				{% if post.comment_status == "closed" %}
-					<p> comments for this post are closed </p>
-				{% else %}
-				    <!-- comment form -->
-				    {% include "comment-form.twig" %}
-				{% endif %}
-			</section>
-		</article>
-	</div><!-- /content-wrapper -->
+							<div class="box-item flex-two">
+								<div class="tags flex-three ">
+									<h3 class="title-tag fw-6">Etiquettes:</h3>
+									<div class="flex fs-16 link-style-7 font-2 fw-4">
+										{% set tags = post.terms('post_tag') %}
+										{% if tags %}
+											{% for tag in tags %}
+												<a href="{{ tag.link }}">{{ tag.name }}</a>
+											{% endfor %}
+										{% else %}
+											<h4>Pas d'étiquettes définit sur cet articles</h4>
+										{% endif %}
+									</div>
+								</div>
+								<div class="share flex-three ">
+									<h3 class="title-share fw-6">Partager:</h3>
+									<div class="icon-share link-style-6">
+										<a href="https://www.facebook.com/sharer/sharer.php?u={{ post.link }}" target="_blank" rel="noopener">
+											<i class="fab fa-facebook-f"></i>
+										</a>
+										<a href="https://twitter.com/intent/tweet?text={{ post.title }}&url={{ post.link }}" target="_blank" rel="noopener">
+											<i class="fab fa-twitter"></i>
+										</a>
+										<a href="https://www.linkedin.com/shareArticle?mini=true&url={{ post.link }}&title={{ post.title }}&summary={{ post.except }}&source=ATGC" target="_blank" rel="noopener">
+											<i class="fab fa-linkedin"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="box-text">
+								{{ post.content }}
+							</div>
+							<div class="image-one">
+								<img src="{{ post.thumbnail.src|resize(750, 420) }}" class="rounded" alt="{{ post.title }}">
+							</div>
+
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-4 col-md-12">
+					<aside class="side-bar">
+						<div class="inner-side-bar">
+							<div class="widget widget-author center">
+								<div class="images">
+									<img class="img-item" src="{{ site.theme.link }}/assets/images/logo/favicon-125x125.png" alt="Vegnature">
+								</div>
+								<h3 class="link-style-1">
+									<a href="{{post.author.path}}">
+										{{ post.author.name }}
+									</a>
+								</h3>
+								<h5 class="text-color-6 fw-4">
+									<time datetime="{{ post.date|date('d-m-Y H:i:s') }}">{{ post.date }}</time>
+								</h5>
+								<p>Vous pouvez nous suivre via nos différents RSN.</p>
+								<div class="icon-social link-style-6">
+									{% include "partials/social-menu.twig" with {'items': social_menu.get_items} %}
+								</div>
+							</div>
+
+							<div class="widget widget-categories style">
+								<h3 class="widget-title title-list">
+									Catégories
+								</h3>
+								<ul>
+									{% set current_category = post.terms('category')|first %}
+									{% for category in post.terms('category') %}
+										<li class="{{ category.id == current_category.id ? 'active' : '' }}">
+											<h4>
+												<a href="{{ category.link }}">{{ category.name }}</a>
+											</h4>
+										</li>
+									{% endfor %}
+								</ul>
+							</div>
+
+							<div class="widget widget-menu">
+								<h3 class="widget-title title-news">
+									Articles récents
+								</h3>
+								<ul class="recent-news">
+									{% if recent_posts %}
+										{% for recent_post in recent_posts %}
+											<li class="hover-img flex">
+												<div class="thumb img-style">
+													<img class="img" src="{{ recent_post.thumbnail.src|resize(80, 80) }}" alt="{{ recent_post.thumbnail.alt }}">
+												</div>
+												<div class="content link-style-1">
+													<h5 class="title fw-6">
+														<a href="{{ recent_post.link }}">{{ recent_post.title }}</a>
+													</h5>
+													<h5 class="days fw-4 text-color-6">{{ recent_post.post_date | date("d M Y") }}</h5>
+												</div>
+											</li>
+										{% endfor %}
+									{% else %}
+										<li>
+											<h5>Pas d'article disponible!</h5>
+										</li>
+									{% endif %}
+								</ul>
+							</div>
+
+
+						</div>
+					</aside>
+				</div>
+			</div>
+		</div>
+	</section>
+
 {% endblock %}
