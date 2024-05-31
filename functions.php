@@ -26,3 +26,20 @@ Timber\Timber::init();
 Timber::$dirname = [ 'templates', 'views' ];
 
 new StarterSite();
+
+
+
+/**
+ * Fixes the category issue by adding a custom route for category pagination.
+ * Loads posts belonging to a specific category for a given page.
+ *
+ * @param array $params   An array containing parameters from the URL.
+ * @return void
+ */
+Routes::map('category/:slug/page/:pg', function($params){
+    // Construct the query to retrieve posts for a specific category and page
+    $query = 'posts_per_page=1&category_name=' . $params['slug'] . '&paged=' . $params['pg'];
+    
+    // Load the category page using the constructed query
+    Routes::load('category.php', $params, $query);
+});
