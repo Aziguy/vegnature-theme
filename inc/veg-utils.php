@@ -1,4 +1,20 @@
 <?php
+/**
+ * Enqueue Dashicons for the frontend
+ *
+ * This function loads the dashicons stylesheet, making them available
+ * for use on the frontend of our WordPress website.
+ *
+ * @since 1.0.0
+ */
+function ww_load_dashicons() {
+    // Enqueue Dashicons stylesheet
+    wp_enqueue_style('dashicons');
+  }
+  
+  // Hook the function to 'wp_enqueue_scripts' action at a late priority (999)
+  add_action('wp_enqueue_scripts', 'ww_load_dashicons', 999);
+
 
 
 /**
