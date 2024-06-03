@@ -1,0 +1,37 @@
+{% for event in post_data %}
+	<div class="col-lg-4 col-md-6 col-sm-12">
+		<div class="blog-box tf-img hover-img hv-one">
+			<a class="media img-style" href="{{ event.link }}">
+				<img class="img-item img-fix" src="{{ event.thumbnail }}" alt="{{ event.title }}">
+				<span class="hover-one"></span>
+			</a>
+			<div class="content">
+				<div class="days absolute">
+					<div class="number">{{ event.meta('date_de_levenement') | string_to_date('d') }}</div>
+					<div class="titles">{{ event.meta('date_de_levenement') | string_to_date('M Y') }}</div>
+				</div>
+				<h4>
+					{{ event.meta('lieu_de_levenement') }}
+				</h4>
+				<h3>
+					<a href="{{ event.link }}">
+						{% set max_title_length = 50 %}
+						{% set truncated_title = event.title %}
+						{% if event.title | length > max_title_length %}
+							{% set truncated_title = event.title | slice(0, max_title_length - 3) ~ '...' %}
+						{% endif %}
+						{{ truncated_title }}
+					</a>
+				</h3>
+
+				<p>{{ event.excerpt.read_more('') }}</p>
+
+				<div class="meta flex-one">
+					<a href="{{ event.link }}" class="btn-button flex fw-5">En savoir plus</a>
+					<a href="{{ event.link }}" class="comment flex">{{ post_views_counter.getPostViews(event.ID) }}
+						vues</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endfor %}

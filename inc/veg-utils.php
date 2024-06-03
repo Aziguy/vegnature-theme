@@ -18,6 +18,87 @@ function ww_load_dashicons() {
 
 
 /**
+ * Converts a string representation of a date to a formatted date string.
+ *
+ * This function takes a string representing a date, an optional format, and an
+ * optional mode to control the output format.
+ *
+ * Modes:
+ *  - 'day': Returns only the day of the month (e.g., 02).
+ *  - 'month_year': Returns the month name and year (e.g., June 2024).
+ *  - (default) Any other value will format the entire date based on the provided format.
+ *
+ * @param string $string The string representation of the date to convert.
+ * @param string $format (optional) The desired format for the output date string when not using a mode.
+ *   Defaults to 'd M Y' (day month year).
+ * @param string $mode (optional) Controls the output format. Defaults to the full date.
+ * @return string The formatted date string, or an empty string if conversion fails.
+ *
+ * @throws Exception If the provided string cannot be parsed as a valid date.
+ */
+function veg_string_to_date($string, $format = 'd M Y', $mode = '') {
+    try {
+      // Check if the string is in the format YYYYMMDD
+      if (preg_match('/^\d{8}$/', $string)) {
+        // Create a DateTime object using the specific format 'Ymd'
+        $date = DateTime::createFromFormat('Ymd', $string);
+      } else {
+        // Set the locale to French (or any other appropriate locale)
+        setlocale(LC_TIME, 'fr_FR.utf8', 'fra'); // Adjust locale as needed
+  
+        // Use IntlDateFormatter for non-YYYYMMDD formats
+        $formatter = new IntlDateFormatter(
+            'fr_FR', // Locale
+            IntlDateFormatter::FULL, // Date type
+            IntlDateFormatter::NONE, // Time type
+            'UTC', // Time zone
+            IntlDateFormatter::GREGORIAN, // Calendar type
+            'd MMMM yyyy' // Pattern that matches the input string format (adjust if needed)
+        );
+  
+        $timestamp = $formatter->parse($string);
+        if ($timestamp === false) {
+            return 'Error: Invalid date format';
+        }
+  
+        // Create a DateTime object from the parsed timestamp
+        $date = (new DateTime())->setTimestamp($timestamp);
+      }
+  
+      // Format the DateTime object based on the mode
+      switch ($mode) {
+        case 'day':
+          $format = 'd';
+          break;
+        case 'month_year':
+          $format = 'M Y';
+          break;
+      }
+  
+      return $date->format($format);
+    } catch (Exception $e) {
+      // Handle potential parsing exceptions gracefully (e.g., log the error)
+      return '';  // Or return a default value like an empty string
+    }
+  }
+  
+  /**
+   * Registers the `string_to_date` filter with the Timber Twig environment.
+   *
+   * This function adds the custom filter to the Twig environment used by Timber.
+   *
+   * @param Twig_Environment $twig The Twig environment instance used by Timber.
+   * @return Twig_Environment The modified Twig environment with the filter registered.
+   */
+  add_filter('timber/twig', function($twig) {
+    $twig->addFilter(new Twig\TwigFilter('string_to_date', 'veg_string_to_date'));
+    return $twig;
+  });
+  
+  
+
+
+/**
  * Formats a given number as a currency with the specified currency symbol.
  * Differentiates formatting based on the currency code provided.
  *

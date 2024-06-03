@@ -1,0 +1,128 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	<section class="tf-section2 flat-blog-details">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-md-12">
+					<article class="article">
+						<div class="post">
+
+							<div class="box-item flex-two">
+								<div class="tags flex-three ">
+									<h3 class="title-tag fw-6">Etiquettes:</h3>
+									<div class="flex fs-16 link-style-7 font-2 fw-4">
+										{% set tags = post.terms('post_tag') %}
+										{% if tags %}
+											{% for tag in tags %}
+												<a href="{{ tag.link }}">{{ tag.name }}</a>
+											{% endfor %}
+										{% else %}
+											<h4>Pas d'étiquettes définit !</h4>
+										{% endif %}
+									</div>
+								</div>
+								<div class="share flex-three ">
+									<h3 class="title-share fw-6">Partager:</h3>
+									<div class="icon-share link-style-6">
+										<a href="https://www.facebook.com/sharer/sharer.php?u={{ post.link }}" target="_blank" rel="noopener">
+											<i class="fab fa-facebook-f"></i>
+										</a>
+										<a href="https://twitter.com/intent/tweet?text={{ post.title }}&url={{ post.link }}" target="_blank" rel="noopener">
+											<i class="fab fa-twitter"></i>
+										</a>
+										<a href="https://www.linkedin.com/shareArticle?mini=true&url={{ post.link }}&title={{ post.title }}&summary={{ post.except }}&source=ATGC" target="_blank" rel="noopener">
+											<i class="fab fa-linkedin"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="box-text">
+								{{ post.content }}
+							</div>
+							<div
+								class="image-one">{# <img src="{{ post.thumbnail.src|resize(750, 420) }}" class="rounded" alt="{{ post.title }}"> #}
+							</div>
+
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-4 col-md-12">
+					<aside class="side-bar">
+						<div class="inner-side-bar">
+							<div class="widget widget-author center">
+								<div class="images">
+									<img class="img-item" src="{{ site.theme.link }}/assets/images/logo/favicon-125x125.png" alt="Vegnature">
+								</div>
+								<h3 class="link-style-1">
+									<a href="{{post.author.path}}">
+										<i class="fas fa-users"></i>
+										{{ post.author.name }}
+									</a>
+								</h3>
+								<h5 class="text-color-6 fw-4">
+									<i class="fas fa-calendar-alt"></i>
+									{{ post.meta('date_de_levenement') }}
+									à
+									{{ post.meta('heure_de_levenement') }}
+								</h5>
+								<p>Vous pouvez nous suivre via nos RSN.</p>
+								<div class="icon-social link-style-6">
+									{% include "partials/social-menu.twig" with {'items': social_menu.get_items} %}
+								</div>
+							</div>
+
+							<div class="widget widget-categories style">
+								<h3 class="widget-title title-list">
+									Ajouter à votre calendrier
+								</h3>
+								<div class="dropdown">
+									<button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+										Ajouter au calendrier
+									</button>
+									<div class="dropdown-menu">
+										<a class="dropdown-item" href="https://www.google.com/calendar/event?action=TEMPLATE&amp;dates={{ post.meta('date_de_levenement')|string_to_date('d M Y')|date('Ymd') }}T{{ post.meta('heure_de_levenement')|replace({':': ''}) }}00/{{ post.meta('date_de_levenement')|string_to_date('d M Y')|date('Ymd') }}T240000&amp;text={{ post.title }}&amp;details={{ post.excerpt.read_more('') }}&amp;location={{ post.meta('lieu_de_levenement') }}&amp;trp=false&amp;ctz=Europe/Paris&amp;sprop=website:{{ site.link }}" target="_blank" rel="noopener noreferrer nofollow noindex">Google Agenda</a>
+										<a class="dropdown-item" href="https://outlook.office.com/owa/?path=/calendar/action/compose&amp;rrv=addevent&amp;startdt={{ post.meta('date_de_levenement')|string_to_date('d M Y')|date('Y-m-d') }}T{{ post.meta('heure_de_levenement') }}:00+01:00&amp;enddt={{ post.meta('date_de_levenement')|string_to_date('d M Y')|date('Y-m-d') }}T24:00:00+01:00&amp;location={{ post.meta('lieu_de_levenement') }}&amp;body={{ post.excerpt.read_more('') }}" target="_blank" rel="noopener noreferrer nofollow noindex">Outlook 365</a>
+										<a class="dropdown-item" href="https://outlook.live.com/owa/?path=/calendar/action/compose&amp;rrv=addevent&amp;startdt={{ post.meta('date_de_levenement')|string_to_date('d M Y')|date('Y-m-d') }}T{{ post.meta('heure_de_levenement') }}:00+01:00&amp;enddt={{ post.meta('date_de_levenement')|string_to_date('d M Y')|date('Y-m-d') }}T24:00:00+01:00&amp;location={{ post.meta('lieu_de_levenement') }}&amp;subject={{ post.title }}&amp;body={{ post.excerpt.read_more('') }}" target="_blank" rel="noopener noreferrer nofollow noindex">Outlook Live</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="widget widget-menu">
+								<h3 class="widget-title title-news">
+									Evénéments récents
+								</h3>
+								<ul class="recent-news">
+									{% if recent_posts %}
+										{% for recent_post in recent_posts %}
+											<li class="hover-img flex">
+												<div class="thumb img-style">
+													<img class="img" src="{{ recent_post.thumbnail.src|resize(80, 80) }}" alt="{{ recent_post.thumbnail.alt }}">
+												</div>
+												<div class="content link-style-1">
+													<h5 class="title fw-6">
+														<a href="{{ recent_post.link }}">{{ recent_post.title }}</a>
+													</h5>
+													<h5 class="days fw-4 text-color-6">{{ recent_post.post_date | date("d M Y") }}</h5>
+												</div>
+											</li>
+										{% endfor %}
+									{% else %}
+										<li>
+											<h5>Pas d'article disponible!</h5>
+										</li>
+									{% endif %}
+								</ul>
+							</div>
+
+
+						</div>
+					</aside>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

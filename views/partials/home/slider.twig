@@ -2,108 +2,49 @@
 <section class="slider home">
 	<div class="swiper-container mainslider">
 		<div class="swiper-wrapper">
-			<div class="swiper-slide">
-				<div class="slider-item">
-					<div class="flat-slider">
-						<div class="img-slider">
-							<img class="img-item" src="{{ site.theme.link }}/assets/images/slider/slider-02.jpg" alt="">
-						</div>
-						<div class="container" style="z-index:2;">
-							<div class="content">
-								<div class="heading">
-									<div class="sub-title">Samedi 18 mai 2024</div>
-									<h1>Apero Buffet Vegan à Grenoble ce samedi</h1>
-									<h3>Lorem ipsum dolor at simet.</h3>
-								</div>
-								<div class="flat-bt-slider">
-									<div class="sl-button buttons">
-										<a class="blob-btn btn-1 btn-style" href="#">
-											En savoir plus
+			{% for event in post_data %}
+				<div class="swiper-slide">
+					<div class="slider-item">
+						<div class="flat-slider">
+							<div class="img-slider">
+								{% if event.thumbnail %}
+									<img class="img-item" src="{{ event.thumbnail|resize(1847, 800) }}" alt="{{ event.title }}">
+								{% else %}
+									<img class="img-item" src="{{ site.theme.link }}/assets/images/slider/slider-01.jpg" alt="{{ event.title }}">
+								{% endif %}
 
-											<span class="blob-btn__inner">
-												<span class="blob-btn__blobs">
-													<span class="blob-btn__blob"></span>
-													<span class="blob-btn__blob"></span>
-													<span class="blob-btn__blob"></span>
-													<span class="blob-btn__blob"></span>
+							</div>
+							<div class="container" style="z-index:2;">
+								<div class="content">
+									<div class="heading">
+										<div class="sub-title">{{ event.meta('date_de_levenement') }}
+											à
+											{{ event.meta('lieu_de_levenement') }}</div>
+										<h1>{{ event.title }}</h1>
+										<h3>{{ event.excerpt.read_more('') }}</h3>
+									</div>
+									<div class="flat-bt-slider">
+										<div class="sl-button buttons">
+											<a class="blob-btn btn-1 btn-style" href="{{ event.link }}">
+												En savoir plus
+
+												<span class="blob-btn__inner">
+													<span class="blob-btn__blobs">
+														<span class="blob-btn__blob"></span>
+														<span class="blob-btn__blob"></span>
+														<span class="blob-btn__blob"></span>
+														<span class="blob-btn__blob"></span>
+													</span>
 												</span>
-											</span>
-										</a>
+											</a>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="swiper-slide">
-				<div class="slider-item">
-					<div class="flat-slider">
-						<div class="img-slider">
-							<img class="img-item" src="{{ site.theme.link }}/assets/images/slider/slider-01.jpg" alt="">
-						</div>
-						<div class="container" style="z-index:2;">
-							<div class="content">
-								<div class="heading">
-									<div class="sub-title">Vendredi 24 mai 2024</div>
-									<h1>Soirée Intestin & Microbiote à Montpellier</h1>
-									<h3>Lorem ipsum dolor at simet.</h3>
-								</div>
-								<div class="flat-bt-slider">
-									<div class="sl-button buttons">
-										<a class="blob-btn btn-1 btn-style" href="#">
-											En savoir plus
-
-											<span class="blob-btn__inner">
-												<span class="blob-btn__blobs">
-													<span class="blob-btn__blob"></span>
-													<span class="blob-btn__blob"></span>
-													<span class="blob-btn__blob"></span>
-													<span class="blob-btn__blob"></span>
-												</span>
-											</span>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="swiper-slide">
-				<div class="slider-item">
-					<div class="flat-slider">
-						<div class="img-slider">
-							<img class="img-item" src="{{ site.theme.link }}/assets/images/slider/slider-01.jpg" alt="">
-						</div>
-						<div class="container" style="z-index:2;">
-							<div class="content">
-								<div class="heading">
-									<div class="sub-title">Vendredi 3 mai 2024</div>
-									<h1>Repas partagé 100% Végétal à Montpellier</h1>
-									<h3>Lorem ipsum dolor at simet.</h3>
-								</div>
-								<div class="flat-bt-slider">
-									<div class="sl-button buttons">
-										<a class="blob-btn btn-1 btn-style" href="#">
-											En savoir plus
-
-											<span class="blob-btn__inner">
-												<span class="blob-btn__blobs">
-													<span class="blob-btn__blob"></span>
-													<span class="blob-btn__blob"></span>
-													<span class="blob-btn__blob"></span>
-													<span class="blob-btn__blob"></span>
-												</span>
-											</span>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			{% endfor %}
 		</div>
 	</div>
 	<div class="swiper-pagination2"></div>

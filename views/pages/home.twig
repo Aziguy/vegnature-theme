@@ -2,11 +2,11 @@
 
 {% block content %}
 	<!--===============  SLIDER  ===============-->
-	{% include "partials/home/slider.twig" %}
+	{% include "partials/home/slider.twig" with { post_data: events } %}
 	{% include "partials/home/intro.twig" %}
 	{% include "partials/home/poles.twig" %}
 	{% include "partials/home/stats.twig" %}
-	{% include "partials/home/news.twig" %}
+	{% include "partials/home/news.twig" with { post_data: news} %}
 	{% include "partials/home/greet-moments.twig" %}
 	{% include "partials/home/partners.twig" %}
 

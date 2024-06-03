@@ -27,11 +27,9 @@
 						{{ truncated_title }}
 					</a>
 				</h3>
-				{% if post.content|length > 100 %}
-					{{ post.content|slice(0, 100) }}...
-				{% else %}
-					{{ post.content }}
-				{% endif %}
+
+				<p>{{ post.excerpt.read_more('') }}</p>
+
 				<div class="meta flex-one">
 					<a href="{{ post.link }}" class="btn-button flex fw-5">En savoir plus</a>
 					<a href="{{ post.link }}" class="comment flex">{{ post_views_counter.getPostViews(post.ID) }}

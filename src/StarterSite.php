@@ -172,8 +172,8 @@ class StarterSite extends Site {
 		wp_enqueue_script('waypoints', get_template_directory_uri() . '/app/js/jquery.waypoints.min.js', array('jquery'), '4.0.0', true);
 		wp_enqueue_script('countup', get_template_directory_uri() . '/app/js/countup.js', array('jquery'), '1.0.3', true);
 		wp_enqueue_script('count-down', get_template_directory_uri() . '/app/js/count-down.js', array('jquery'), '1.0', true);
-		//wp_enqueue_script('count-day', get_template_directory_uri() . '/app/js/count-day.js', array('jquery'), '1.0', true);
-		wp_enqueue_script('bootstrap', get_template_directory_uri() . '/app/js/bootstrap.min.js', array('jquery'), '4.6.0', true);
+		wp_enqueue_script('js-popper', get_template_directory_uri() . '/app/js/js-popper.js', array('jquery'), '1.16.1', true);
+		wp_enqueue_script('bootstrap', get_template_directory_uri() . '/app/js/bootstrap.min.js', array('jquery'), '4.6.2', true);
 		wp_enqueue_script('swiper-bundle-min-js', get_template_directory_uri() . '/app/js/swiper-bundle.min.js', array('jquery'), '6.8.1', true);
 		wp_enqueue_script('swiper', get_template_directory_uri() . '/app/js/swiper.js', array('jquery'), '1.0', true);
 		wp_enqueue_script('jquery-validate', get_template_directory_uri() . '/app/js/jquery-validate.js', array('jquery'), '1.11.1', true);

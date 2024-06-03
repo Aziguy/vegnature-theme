@@ -10,6 +10,8 @@ require_once get_template_directory() . '/inc/veg-custom-login.php';
 require_once get_template_directory() . '/inc/veg-admin-options.php';
 // Path to our utils class or functions..
 require_once get_template_directory() . '/inc/veg-utils.php';
+// Path to class that we implement to make excertp field from post mandatory..
+require_once get_template_directory() . '/inc/veg-post-excerpt.php';
 // Path to our customizer function
 require_once get_template_directory() . '/inc/veg-customizer.php';
 // Path to our shortcode class
