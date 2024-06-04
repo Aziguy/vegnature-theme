@@ -34,52 +34,19 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-lg-2 col-md-3 col-6">
+		<div class="col-lg-4 col-md-6 col-12">
 			<div class="widget widget-menu style-2 ">
 				<div class="title-widget fw-6">Liens</div>
 				<ul class="box-menu link-style-4">
-					<li>
-						<a href="#">Lien #01</a>
-					</li>
-					<li>
-						<a href="#">link #02</a>
-					</li>
-					<li>
-						<a href="#">Link #03</a>
-					</li>
-					<li>
-						<a href="#">Lien #04</a>
-					</li>
-					<li>
-						<a href="#">Lien #05</a>
-					</li>
-					<li>
-						<a href="#">Lien #06</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="col-lg-2 col-md-3 col-6">
-			<div class="widget widget-menu style-3 ">
-				<ul class="box-menu link-style-4">
-					<li>
-						<a href="#">Lien #001</a>
-					</li>
-					<li>
-						<a href="#">link #002</a>
-					</li>
-					<li>
-						<a href="#">Link #003</a>
-					</li>
-					<li>
-						<a href="#">Lien #004</a>
-					</li>
-					<li>
-						<a href="#">Lien #005</a>
-					</li>
-					<li>
-						<a href="#">Lien #006</a>
-					</li>
+					{% if footer_menu %}
+						<ul>
+							{% for item in footer_menu.get_items %}
+								<li class="{{ item.classes | join(' ') }}">
+									<a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
+								</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
 				</ul>
 			</div>
 		</div>
@@ -87,32 +54,22 @@
 			<div class="widget widget-menu style-4">
 				<div class="title-widget fw-6">Veg News</div>
 				<ul class="recent-news ">
-					<li class="hover-img flex">
-						<div class="thumb img-style ">
-							<a href="blog-details.html">
-								<img class="img" src="{{ site.theme.link }}/assets/images/blog/pots-1.jpg" alt="images">
-							</a>
-						</div>
-						<div class="content link-style-3">
-							<h5 class="fw-6">
-								<a href="blog-details.html">Unicode UTF8 Character Sets  They Sltimate Guide Systems</a>
-							</h5>
-							<h6 class="days fw-4">10 June, 2024</h6>
-						</div>
-					</li>
-					<li class="hover-img flex">
-						<div class="thumb img-style ">
-							<a href="blog-details.html">
-								<img class="img" src="{{ site.theme.link }}/assets/images/blog/pots-2.jpg" alt="images">
-							</a>
-						</div>
-						<div class="content link-style-3">
-							<h5 class="fw-6">
-								<a href="blog-details.html">Unicode UTF8 Character Sets  They Sltimate Guide Systems</a>
-							</h5>
-							<h6 class="days fw-4">10 June, 2024</h6>
-						</div>
-					</li>
+					{% for news in footer_news %}
+						<li class="hover-img flex">
+							<div class="thumb img-style ">
+								<a href="{{ news.link }}">
+									<img class="img" src="{{ news.thumbnail|resize(120, 120) }}" alt="images-veg-news">
+								</a>
+							</div>
+							<div class="content link-style-3">
+								<h5 class="fw-6">
+									<a href="{{ news.link }}">{{ news.title }}
+									</a>
+								</h5>
+								<h6 class="days fw-4">{{ news.post_date | date('d F Y') }}</h6>
+							</div>
+						</li>
+					{% endfor %}
 				</ul>
 			</div>
 		</div>

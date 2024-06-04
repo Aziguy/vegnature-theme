@@ -8,14 +8,21 @@
   border-radius: 0.5rem 0.5rem 0 0;
 }
 
-// Single post content style
-.flat-blog-details .post .box-text p {
+/* Shared styles for paragraphs and links */
+.flat-blog-details .post .box-text p,
+.post-type-page p {
   margin-bottom: 0.75rem;
 }
 
-// PAGE STYLE
-.post-type-page p {
-  margin-bottom: 1rem;
+.flat-blog-details .post .box-text a,
+.post-type-page a {
+  font-weight: 600;
+  color: #ff9c00;
+}
+
+.flat-blog-details .post .box-text a:hover,
+.post-type-page a:hover {
+  color: #247f2c;
 }
 
 strong {

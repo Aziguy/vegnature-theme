@@ -2,6 +2,8 @@
 
 require_once get_template_directory() . '/inc/veg-breadcrumbs.php';
 require_once get_template_directory() . '/inc/veg-post-views.php';
+// Path to post.php file
+require_once get_template_directory() . '/posts.php';
 
 use Timber\Site;
 
@@ -60,7 +62,8 @@ class StarterSite extends Site {
         register_nav_menus(
             array(
                 'main-menu' => __('Main Menu'),
-                'social-menu' => __('Social Menu')
+                'social-menu' => __('Social Menu'),
+				'footer-menu' => __('Footer Menu')
             )
         );
     }
@@ -86,6 +89,8 @@ class StarterSite extends Site {
 		$context['notes'] = 'These values are available everytime you call Timber::context();';
 		$context['menu']  = Timber::get_menu('main-menu');
 		$context['social_menu']  = Timber::get_menu('social-menu');
+		$context['footer_menu']  = Timber::get_menu('footer-menu');
+		$context['footer_news'] = get_all_categories_except(['evenements', 'stages'], 2);
 		$context['site']  = $this;
 
 		return $context;

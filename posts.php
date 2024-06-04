@@ -22,7 +22,7 @@ function get_category_posts($category_slug, $posts_per_page = 10, $excluded_cate
       'posts_per_page' => $posts_per_page,
       'paged' => $paged,
       'orderby' => 'date',
-      'order' => 'ASC',
+      'order' => 'DESC',
     ];
   
     // Add exclusion logic if an excluded category slug is provided
@@ -71,7 +71,7 @@ function get_all_categories_except($excluded_category_slugs = [], $posts_per_pag
       'posts_per_page' => $posts_per_page,
       'paged' => $paged,
       'orderby' => 'date',
-      'order' => 'ASC',
+      'order' => 'DESC',
       'tax_query' => [
         [
           'taxonomy' => 'category',
